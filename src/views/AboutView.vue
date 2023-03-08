@@ -36,7 +36,7 @@
 import { socket } from '@/socket'
 import { ref } from 'vue'
 
-const showOverlayRef = ref(true)
+const showOverlayRef = ref(false)
 
 const counterLeftRef = ref(0)
 const countRightRef = ref(0)
