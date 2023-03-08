@@ -48,6 +48,13 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     socket.broadcast.emit('user disconnected', socket.id)
   })
+
+  socket.onAny((eventName, ...args) => {
+    console.log('name: ', eventName, 'args: ', ...args)
+    if (eventName.startsWith('ev_')) {
+      socket.broadcast.emit(eventName, ...args)
+    }
+  })
 })
 
 const PORT = process.env.PORT || 3000

@@ -13,16 +13,22 @@ export const socket = io(URL)
 
 socket.on('connect', () => {
   state.connected = true
+  console.log('SOCKET: connect')
 })
 
 socket.on('disconnect', () => {
   state.connected = false
+  console.log('SOCKET: disconnect')
 })
 
-socket.on('foo', (...args) => {
-  state.fooEvents.push(args)
+socket.on('connect_error', () => {
+  console.log('SOCKET: connection_error')
 })
 
-socket.on('bar', (...args) => {
-  state.barEvents.push(args)
+socket.io.on('reconnection_attempt', () => {
+  console.log('SOCKET: reconnection_attempt')
+})
+
+socket.io.on('reconnect', () => {
+  console.log('SOCKET: reconnect')
 })
