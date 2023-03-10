@@ -10,6 +10,9 @@
         <NumberInput label="Counter right" v-model="counterRight" class="inline-block" />
       </div>
     </div>
+    <div>
+      <TextInput label="Current Game" v-model="currentGame" class="inline-block" />
+    </div>
     <div class="mt-4"><input v-model="showOverlay" type="checkbox" class="mr-2" />show overlay</div>
     <button class="bg-gray-200 p-2 rounded-md mt-5" @click="updateCounters">update overlay</button>
   </div>
@@ -29,13 +32,16 @@ const labelRight = ref('')
 
 const showOverlay = ref(false)
 
+const currentGame = ref('')
+
 function updateCounters() {
   socket.emit('ev_update_counters', {
     labelLeft: labelLeft.value,
     labelRight: labelRight.value,
     counterLeft: counterLeft.value,
     counterRight: counterRight.value,
-    showOverlay: showOverlay.value
+    showOverlay: showOverlay.value,
+    currentGame: currentGame.value
   })
 }
 </script>
