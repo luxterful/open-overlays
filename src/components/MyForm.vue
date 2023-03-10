@@ -35,7 +35,7 @@ const showOverlay = ref(false)
 const currentGame = ref('')
 
 function updateCounters() {
-  socket.emit('ev_update_counters', {
+  socket.emit('updateData', {
     labelLeft: labelLeft.value,
     labelRight: labelRight.value,
     counterLeft: counterLeft.value,

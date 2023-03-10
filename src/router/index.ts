@@ -1,23 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
-const router = createRouter({
+export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      redirect: { name: 'overlays' }
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      path: '/overlays',
+      name: 'overlays',
+      component: () => import('../views/AdminView.vue'),
+      children: [
+        {
+          path: ':id',
+          name: 'overlays-detail',
+          component: () => import('../views/OverlayOperatorView.vue')
+        }
+      ]
+    },
+
+    {
+      path: '/embed/:id',
+      name: 'embed',
+      component: () => import('../views/OverlayEmbedView.vue')
     }
   ]
 })
-
-export default router

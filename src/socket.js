@@ -7,7 +7,7 @@ export const state = reactive({
   barEvents: []
 })
 
-const URL = 'http://localhost:3000'
+const URL = 'http://localhost:3000/'
 
 export const socket = io(URL)
 

@@ -11,7 +11,7 @@
         -
       </button>
       <div class="bg-gray-200 aspect-square w-10 flex items-center justify-center font-mono">
-        {{ props.modelValue }}
+        {{ props.modelValue ?? 0 }}
       </div>
       <button
         class="bg-gray-200 aspect-square w-10 flex items-center justify-center font-mono cursor-pointer"
@@ -32,7 +32,7 @@ const props = defineProps<{
 const emit = defineEmits(['update:modelValue'])
 
 function increase() {
-  emit('update:modelValue', props.modelValue + 1)
+  emit('update:modelValue', (props.modelValue ?? 0) + 1)
 }
 
 function decrease() {
