@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-hidden pt-5">
+  <div class="pt-16 h-full">
     <Transition>
       <div v-if="data.showOverlay">
         <div class="flex custom-perspective">
@@ -8,20 +8,30 @@
           >
             {{ data.labelLeft }}
           </div>
-          <div class="bg-red-200 w-16 text-4xl relative">
+          <div class="w-16 text-4xl relative">
             <div
-              class="absolute rounded-md bg-white drop-shadow-lg w-full h-full scale-125 flex items-center justify-center"
+              class="absolute rounded-md bg-white drop-shadow-lg w-full h-full scale-125 overflow-hidden"
             >
-              {{ data.counterLeft }}
+              <CarouselComponent
+                class="w-16 h-16"
+                item-class="w-16 h-16 flex items-center justify-center"
+                :value="data.counterLeft"
+              />
             </div>
+            <img :src="crown" class="absolute -mt-14 -ml-6 -rotate-12" />
           </div>
           <div class="w-10"></div>
-          <div class="bg-red-200 w-16 text-4xl relative z-10">
+          <div class="w-16 text-4xl relative z-10">
             <div
-              class="absolute rounded-md bg-white drop-shadow-lg w-full h-full scale-125 flex items-center justify-center"
+              class="absolute rounded-md bg-white drop-shadow-lg w-full h-full scale-125 overflow-hidden"
             >
-              {{ data.counterRight }}
+              <CarouselComponent
+                class="w-16 h-16"
+                item-class="w-16 h-16 flex items-center justify-center"
+                :value="data.counterRight"
+              />
             </div>
+            <img :src="crown" class="absolute -mt-14 ml-6 rotate-12" />
           </div>
           <div
             class="bg-green-600 border-green-700 drop-shadow-md z-0 rounded-r-xl border-r-2 border-t-2 border-b-2 p-4 w-72 text-white flex items-center justify-center text-2xl flex-1"
@@ -38,5 +48,22 @@
 </template>
 
 <script setup lang="ts">
-defineProps(['data'])
+import crown from '@/assets/crown.png'
+import sound from '@/assets/sound.mp3'
+import CarouselComponent from '@/components/CarouselComponent.vue'
+import { useSound } from '@vueuse/sound'
+import { computed, watch } from 'vue'
+
+const props = defineProps(['data'])
+
+const { play } = useSound(sound)
+
+computed(() => props.data)
+
+watch(
+  () => [props.data.counterRight, props.data.counterLeft],
+  () => {
+    play()
+  }
+)
 </script>

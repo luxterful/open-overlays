@@ -11,7 +11,7 @@
 import { computed } from 'vue'
 
 const props = defineProps<{
-  modelValue: string
+  modelValue?: string
   label: string
 }>()
 
@@ -19,7 +19,7 @@ const emit = defineEmits(['update:modelValue'])
 
 const value = computed({
   get() {
-    return props.modelValue
+    return props.modelValue || ''
   },
   set(value: string) {
     emit('update:modelValue', value)

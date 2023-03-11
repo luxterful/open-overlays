@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  modelValue: number
+  modelValue?: number
   label: string
 }>()
 
@@ -36,7 +36,7 @@ function increase() {
 }
 
 function decrease() {
-  if (props.modelValue > 0) {
+  if (props.modelValue && props.modelValue > 0) {
     emit('update:modelValue', props.modelValue - 1)
   }
 }

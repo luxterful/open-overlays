@@ -25,10 +25,6 @@ socket.on('connect_error', () => {
   console.log('SOCKET: connection_error')
 })
 
-socket.io.on('reconnection_attempt', () => {
-  console.log('SOCKET: reconnection_attempt')
-})
-
 socket.io.on('reconnect', () => {
   console.log('SOCKET: reconnect')
 })

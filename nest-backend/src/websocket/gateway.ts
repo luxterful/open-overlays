@@ -3,15 +3,17 @@ import {
   MessageBody,
   OnGatewayConnection,
   OnGatewayDisconnect,
-  OnGatewayInit,
   SubscribeMessage,
   WebSocketGateway,
 } from '@nestjs/websockets';
 
 import { Socket } from 'socket.io';
+import { OverlayDataService } from 'src/overlay-data/overlay-data.service';
 
 @WebSocketGateway({ cors: true })
 export class SocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
+  constructor(private readonly overlayDataService: OverlayDataService) {}
+
   handleConnection(socket: Socket, ...args: any[]) {
     console.log(`Client "${socket.id}" connected`);
   }
@@ -45,6 +47,7 @@ export class SocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
     @MessageBody() message: { overlayId: string; data: any },
   ) {
     console.log(`[updateData]: ${JSON.stringify(message)}`);
+    this.overlayDataService.setById(message.overlayId, message.data);
     socket.to(message.overlayId).emit('updateData', message.data);
   }
 }

@@ -9,6 +9,11 @@ export default createRouter({
       redirect: { name: 'overlays' }
     },
     {
+      path: '/test',
+      name: 'test',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
       path: '/overlays',
       name: 'overlays',
       component: () => import('../views/AdminView.vue'),
