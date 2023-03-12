@@ -10,6 +10,11 @@ export default {
     displayName: 'Fact Check',
     operatorCompontent: defineAsyncComponent(() => import('./fact-check/OperatorView.vue')),
     embedCompontent: defineAsyncComponent(() => import('./fact-check/EmbedView.vue'))
+  },
+  'social-rotator': {
+    displayName: 'Social Rotator',
+    operatorCompontent: defineAsyncComponent(() => import('./social-rotator/OperatorView.vue')),
+    embedCompontent: defineAsyncComponent(() => import('./social-rotator/EmbedView.vue'))
   }
 } as {
   [key: string]: { displayName: string; operatorCompontent: Component; embedCompontent: Component }

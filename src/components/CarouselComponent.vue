@@ -10,14 +10,14 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 const props = defineProps<{
-  value: number
+  value: any
   itemClass?: string
 }>()
 
 const isFirst = ref(true)
 
-const value1 = ref<number | null>(props.value)
-const value2 = ref<number | null>(null)
+const value1 = ref<any | null>(props.value)
+const value2 = ref<any | null>(null)
 
 const counter = computed(() => props.value)
 
