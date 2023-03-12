@@ -18,7 +18,9 @@
                 :value="data.counterLeft"
               />
             </div>
-            <img :src="crown" class="absolute -mt-14 -ml-6 -rotate-12" />
+            <Transition name="crown">
+              <img v-if="data.leftWon" :src="crown" class="absolute -mt-14 -ml-6 -rotate-12" />
+            </Transition>
           </div>
           <div class="w-10"></div>
           <div class="w-16 text-4xl relative z-10">
@@ -31,7 +33,9 @@
                 :value="data.counterRight"
               />
             </div>
-            <img :src="crown" class="absolute -mt-14 ml-6 rotate-12" />
+            <Transition name="crown">
+              <img v-if="data.rightWon" :src="crown" class="absolute -mt-14 ml-6 rotate-12" />
+            </Transition>
           </div>
           <div
             class="bg-green-600 border-green-700 drop-shadow-md z-0 rounded-r-xl border-r-2 border-t-2 border-b-2 p-4 w-72 text-white flex items-center justify-center text-2xl flex-1"
@@ -49,16 +53,14 @@
 
 <script setup lang="ts">
 import crown from '@/assets/crown.png'
-import sound from '@/assets/sound.mp3'
 import CarouselComponent from '@/components/CarouselComponent.vue'
+import sound from '@/assets/sound.mp3'
 import { useSound } from '@vueuse/sound'
-import { computed, watch } from 'vue'
+import { watch } from 'vue'
 
 const props = defineProps(['data'])
 
 const { play } = useSound(sound)
-
-computed(() => props.data)
 
 watch(
   () => [props.data.counterRight, props.data.counterLeft],
@@ -67,3 +69,14 @@ watch(
   }
 )
 </script>
+
+<style>
+.crown-enter-active {
+  transition: all 0.5s ease;
+}
+
+.crown-enter-from {
+  transform: translateY(-25px);
+  opacity: 0;
+}
+</style>

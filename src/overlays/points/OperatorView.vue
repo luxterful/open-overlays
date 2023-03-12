@@ -13,6 +13,10 @@
     <div>
       <TextInput label="Current Game" v-model="data.currentGame" class="inline-block" />
     </div>
+    <div class="mt-4 flex gap-10">
+      <div><input v-model="data.leftWon" type="checkbox" class="mr-2" />left Won</div>
+      <div><input v-model="data.rightWon" type="checkbox" class="mr-2" />right Won</div>
+    </div>
     <div class="mt-4">
       <input v-model="data.showOverlay" type="checkbox" class="mr-2" />show overlay
     </div>
