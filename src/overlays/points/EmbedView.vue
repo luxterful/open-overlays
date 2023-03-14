@@ -43,8 +43,8 @@
             {{ data.labelRight }}
           </div>
         </div>
-        <div class="flex items-center justify-center mt-5" v-if="data.currentGame">
-          <span class="bg-white p-2 rounded-md"> {{ data.currentGame }} </span>
+        <div class="flex items-center justify-center mt-8" v-if="data.currentGame">
+          <span class="bg-white p-2 px-5 rounded-md drop-shadow-md"> {{ data.currentGame }} </span>
         </div>
       </div>
     </Transition>
@@ -53,24 +53,46 @@
 
 <script setup lang="ts">
 import crown from '@/assets/crown.png'
+import soundPop from '@/assets/sound.mp3'
+import soundWin from '@/assets/win.mp3'
 import CarouselComponent from '@/components/CarouselComponent.vue'
-import sound from '@/assets/sound.mp3'
+
 import { useSound } from '@vueuse/sound'
-import { watch } from 'vue'
+import { onUnmounted, watch } from 'vue'
 
 const props = defineProps(['data'])
 
-const { play } = useSound(sound)
+const soundPopRef = useSound(soundPop)
+const soundWinRef = useSound(soundWin)
 
 watch(
   () => [props.data.counterRight, props.data.counterLeft],
-  () => {
-    play()
+  ([valueNewLeft, valueNewRight], [oldValueLeft, oldValueRight]) => {
+    if (oldValueLeft < valueNewLeft || oldValueRight < valueNewRight) soundPopRef.play()
   }
 )
+
+watch(
+  () => [props.data.leftWon, props.data.rightWon],
+  ([valueNewLeft, valueNewRight], [oldValueLeft, oldValueRight]) => {
+    if (
+      (oldValueLeft === false && valueNewLeft === true) ||
+      (oldValueRight === false && valueNewRight === true)
+    ) {
+      soundWinRef.play()
+    } else {
+      soundWinRef.stop()
+    }
+  }
+)
+
+onUnmounted(() => {
+  soundWinRef.stop()
+  soundPopRef.stop()
+})
 </script>
 
-<style>
+<style scoped>
 .crown-enter-active {
   transition: all 0.5s ease;
 }

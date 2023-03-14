@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="relative w-full">
     <Transition>
       <div class="absolute" :class="itemClass" v-if="isFirst">{{ value1 }}</div>
       <div class="absolute" :class="itemClass" v-else>{{ value2 }}</div>
@@ -32,7 +32,7 @@ watch(counter, () => {
 })
 </script>
 
-<style>
+<style scoped>
 .v-enter-active,
 .v-leave-active {
   transition: all 0.5s ease;

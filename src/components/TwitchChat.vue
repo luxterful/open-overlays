@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="flex flex-col gap-1">
     <div v-for="message in messages" :key="message.id" class="flex justify-between">
       <div>
         <span class="font-bold">{{ message.sender }}:</span> {{ message.content }}
       </div>
-      <div class="flex items-center">Button</div>
+      <div><slot name="buttons" v-bind="message" /></div>
     </div>
   </div>
 </template>

@@ -15,6 +15,13 @@ export default {
     displayName: 'Social Rotator',
     operatorCompontent: defineAsyncComponent(() => import('./social-rotator/OperatorView.vue')),
     embedCompontent: defineAsyncComponent(() => import('./social-rotator/EmbedView.vue'))
+  },
+  'featured-chat-messages': {
+    displayName: 'Featured Chat Messages',
+    operatorCompontent: defineAsyncComponent(
+      () => import('./featured-chat-messages/OperatorView.vue')
+    ),
+    embedCompontent: defineAsyncComponent(() => import('./featured-chat-messages/EmbedView.vue'))
   }
 } as {
   [key: string]: { displayName: string; operatorCompontent: Component; embedCompontent: Component }

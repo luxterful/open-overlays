@@ -49,11 +49,17 @@ watch(overlayData, () => {
 function updateOverlay() {
   socket.emit('updateData', { overlayId: overlayId.value, data: overlayData })
 }
+
+function copyOverlayUrl() {
+  const baseUrl = window.location.origin
+  const url = `${baseUrl}/embed/${overlayId.value}`
+  navigator.clipboard.writeText(url)
+}
 </script>
 
 <template>
   <div class="flex flex-col w-full">
-    <div class="flex-1">
+    <div class="flex-1 overflow-y-auto">
       <div class="bg-slate-600 w-full h-11 text-white flex justify-between">
         <div class="flex gap-5">
           <div
@@ -72,7 +78,10 @@ function updateOverlay() {
         <div class="p-2 flex justify-center">
           <div class="bg-slate-200 p-1 rounded-md text-slate-600">X overlays connected</div>
         </div>
-        <div class="flex gap-2 items-center hover:bg-slate-500 p-2 cursor-pointer">
+        <div
+          class="flex gap-2 items-center hover:bg-slate-500 p-2 cursor-pointer"
+          @click="copyOverlayUrl"
+        >
           <ClipboardDocumentIcon class="h-5 w-5" />Copy overlay url
         </div>
       </div>
