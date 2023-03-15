@@ -1,6 +1,6 @@
 <template>
-  <div class="h-full flex">
-    <TwitchChat class="bg-purple-300 p-2 max-h-96 overflow-y-auto">
+  <div class="h-full w-full flex">
+    <TwitchChat class="flex-1 bg-purple-300 p-2 max-h-96 overflow-y-auto">
       <template #buttons="message">
         <div
           class="bg-gray-300 p-2 rounded-md cursor-pointer hover:bg-gray-400"
@@ -10,7 +10,7 @@
         </div>
       </template>
     </TwitchChat>
-    <div class="flex flex-col gap-1 p-2">
+    <div class="flex-1 flex flex-col gap-1 p-2">
       <span class="font-bold text-lg mb-2">Message Backlog</span>
 
       <div v-for="message in messageBacklog" :key="message.id" class="flex justify-between">
@@ -29,19 +29,39 @@
     </div>
   </div>
   <div>
-    <TextInput label="User" v-model="data.selectedMessage.sender" />
-    <TextInput label="Message" v-model="data.selectedMessage.content" />
+    <TextInput label="User" v-model="sender" />
+    <TextInput :multiline="true" label="Message" v-model="content" />
     <input v-model="data.showOverlay" type="checkbox" class="mr-2" />show overlay
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import TwitchChat from '../../components/TwitchChat.vue'
 import { ChevronDoubleRightIcon } from '@heroicons/vue/24/solid'
 import TextInput from '@/components/TextInput.vue'
 
-defineProps(['data'])
+const props = defineProps(['data'])
+
+const sender = computed({
+  get() {
+    return props.data?.selectedMessage?.sender || ''
+  },
+  set(newValue) {
+    if (props.data?.selectedMessage) props.data.selectedMessage.sender = newValue
+    props.data.selectedMessage = { sender: newValue }
+  }
+})
+
+const content = computed({
+  get() {
+    return props.data?.selectedMessage?.content || ''
+  },
+  set(newValue) {
+    if (props.data?.selectedMessage) props.data.selectedMessage.content = newValue
+    props.data.selectedMessage = { content: newValue }
+  }
+})
 
 const messageBacklog = ref<any>([])
 

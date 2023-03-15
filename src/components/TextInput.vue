@@ -3,7 +3,17 @@
     <label for="custom-input-number" class="w-full text-gray-700 text-sm font-semibold">
       {{ props.label }}
     </label>
-    <input v-model="value" class="block border p-1 border-slate-400 bg-slate-200 rounded-md" />
+    <textarea
+      v-if="multiline"
+      v-model="value"
+      class="block border p-1 border-slate-400 bg-slate-200 rounded-md"
+    />
+
+    <input
+      v-else
+      v-model="value"
+      class="block border p-1 border-slate-400 bg-slate-200 rounded-md"
+    />
   </div>
 </template>
 
@@ -13,6 +23,7 @@ import { computed } from 'vue'
 const props = defineProps<{
   modelValue?: string
   label: string
+  multiline?: Boolean
 }>()
 
 const emit = defineEmits(['update:modelValue'])
