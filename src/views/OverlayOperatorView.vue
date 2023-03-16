@@ -59,11 +59,11 @@ function copyOverlayUrl() {
 
 <template>
   <div class="flex flex-col w-full">
-    <div class="flex-1 overflow-y-auto">
+    <div class="flex-1 overflow-y-auto flex flex-col">
       <div class="bg-slate-600 w-full h-11 text-white flex justify-between">
         <div class="flex gap-5">
           <div
-            class="flex gap-2 items-center hover:bg-slate-500 p-2 cursor-pointer"
+            class="flex gap-2 items-center hover:bg-slate-500 p-2 cursor-pointer flex-nowrap"
             @click="updateOverlay"
           >
             <ArrowDownOnSquareStackIcon class="h-5 w-5" />Update Overlay
@@ -85,7 +85,7 @@ function copyOverlayUrl() {
           <ClipboardDocumentIcon class="h-5 w-5" />Copy overlay url
         </div>
       </div>
-      <div class="p-3">
+      <div class="p-3 flex-1">
         <component :is="overlays[overlayId].operatorCompontent" :data="overlayData" />
       </div>
     </div>

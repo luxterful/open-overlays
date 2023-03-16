@@ -1,10 +1,13 @@
 <template>
-  <div class="flex flex-col gap-1">
-    <div v-for="message in messages" :key="message.id" class="flex justify-between">
-      <div>
-        <span class="font-bold">{{ message.sender }}:</span> {{ message.content }}
+  <div>
+    <span class="font-bold text-lg">Syndsk Twitch Chat</span>
+    <div class="flex flex-col gap-1 mt-4">
+      <div v-for="message in messages" :key="message.id" class="flex justify-between">
+        <div>
+          <span class="font-bold">{{ message.sender }}:</span> {{ message.content }}
+        </div>
+        <div><slot name="buttons" v-bind="message" /></div>
       </div>
-      <div><slot name="buttons" v-bind="message" /></div>
     </div>
   </div>
 </template>
