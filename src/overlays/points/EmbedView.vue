@@ -75,10 +75,7 @@ watch(
 watch(
   () => [props.data.leftWon, props.data.rightWon],
   ([valueNewLeft, valueNewRight], [oldValueLeft, oldValueRight]) => {
-    if (
-      (oldValueLeft === false && valueNewLeft === true) ||
-      (oldValueRight === false && valueNewRight === true)
-    ) {
+    if ((!oldValueLeft && valueNewLeft === true) || (!oldValueRight && valueNewRight === true)) {
       soundWinRef.play()
     } else {
       soundWinRef.stop()
