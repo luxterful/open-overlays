@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TextInput label="Fact" v-model="data.fact" class="inline-block" />
+    <TextInput :multiline="true" label="Fact" v-model="data.fact" class="inline-block" />
   </div>
   <div class="mt-4">
     <input v-model="data.showOverlay" type="checkbox" class="mr-2" />show overlay

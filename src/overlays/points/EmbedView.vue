@@ -98,4 +98,19 @@ onUnmounted(() => {
   transform: translateY(-25px);
   opacity: 0;
 }
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.5s ease;
+}
+
+.v-leave-to {
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+.v-enter-from {
+  transform: translateY(50px);
+  opacity: 0;
+}
 </style>

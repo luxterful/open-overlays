@@ -22,6 +22,11 @@ export default {
       () => import('./featured-chat-messages/OperatorView.vue')
     ),
     embedCompontent: defineAsyncComponent(() => import('./featured-chat-messages/EmbedView.vue'))
+  },
+  test: {
+    displayName: 'test',
+    operatorCompontent: defineAsyncComponent(() => import('./test/OperatorView.vue')),
+    embedCompontent: defineAsyncComponent(() => import('./test/EmbedView.vue'))
   }
 } as {
   [key: string]: { displayName: string; operatorCompontent: Component; embedCompontent: Component }
