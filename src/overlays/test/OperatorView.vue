@@ -12,13 +12,17 @@
 </template>
 
 <script setup lang="ts">
-import config from './config.json'
-import TextInput from '@/components/input-modules/TextInputModule.vue'
-import NumberInput from '@/components/input-modules/NumberInputModule.vue'
 import BoolInput from '@/components/input-modules/BoolInputModule.vue'
+import NumberInput from '@/components/input-modules/NumberInputModule.vue'
+import TextInput from '@/components/input-modules/TextInputModule.vue'
+import config from './config.json'
+import { parseConfig } from './configLoader'
 
 const moduleMap = { text: TextInput, number: NumberInput, bool: BoolInput } as any
 const modulesRaw = config.modules
+
+const con = parseConfig(config)
+console.log(con)
 
 const modules = Object.keys(modulesRaw).map((key) => {
   return { ...(modulesRaw as any)[key], id: key }

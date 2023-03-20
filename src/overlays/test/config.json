@@ -9,7 +9,7 @@
       "type": "text"
     },
     "counterLeft": {
-      "displayText": "Counter left",
+      "displayText": "Counter left Counter left Counter left Counter left",
       "type": "number"
     },
     "counterRight": {

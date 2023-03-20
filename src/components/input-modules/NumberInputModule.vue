@@ -1,10 +1,8 @@
 <template>
   <div class="w-full h-full">
     <div class="flex flex-col h-full">
-      <div class="flex-1 flex items-center justify-center">
-        <div class="text-md">
-          {{ label }}
-        </div>
+      <div class="h-9 flex items-center justify-center text-md">
+        {{ label }}
       </div>
       <div class="flex-1 p-1">
         <div class="flex h-full rounded-md overflow-hidden border border-slate-400 bg-slate-200">
