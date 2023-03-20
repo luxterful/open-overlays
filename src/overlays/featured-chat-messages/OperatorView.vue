@@ -48,10 +48,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import TwitchChat from '../../components/TwitchChat.vue'
-import { ChevronDoubleRightIcon } from '@heroicons/vue/24/solid'
 import TextInput from '@/components/TextInput.vue'
+import { ChevronDoubleRightIcon } from '@heroicons/vue/24/solid'
+import { computed } from 'vue'
+import TwitchChat from '../../components/TwitchChat.vue'
 
 const props = defineProps(['data'])
 
@@ -65,7 +65,7 @@ const sender = computed({
   },
   set(newValue) {
     if (props.data?.selectedMessage) props.data.selectedMessage.sender = newValue
-    props.data.selectedMessage = { sender: newValue }
+    props.data.selectedMessage = { ...props.data.selectedMessage, sender: newValue }
   }
 })
 
@@ -75,7 +75,7 @@ const content = computed({
   },
   set(newValue) {
     if (props.data?.selectedMessage) props.data.selectedMessage.content = newValue
-    props.data.selectedMessage = { content: newValue }
+    props.data.selectedMessage = { ...props.data.selectedMessage, content: newValue }
   }
 })
 

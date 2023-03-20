@@ -27,5 +27,5 @@ setInterval(() => {
   }
 
   showMain.value = !showMain.value
-}, 5000)
+}, 60000)
 </script>
