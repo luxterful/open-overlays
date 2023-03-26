@@ -19,11 +19,11 @@
     "displayText": "Current game",
     "type": "text"
   },
-  "wonLeft": {
+  "leftWon": {
     "displayText": "Left won",
     "type": "bool"
   },
-  "wonRight": {
+  "rightWon": {
     "displayText": "Right won",
     "type": "bool"
   },

@@ -19,6 +19,7 @@
 <script setup lang="ts">
 import { parseConfig } from '@/utils/configLoader'
 import modulesMap from '@/components/input-modules'
+import { computed } from 'vue'
 
 const props = defineProps(['data', 'config'])
 
@@ -27,9 +28,11 @@ console.log(props.config)
 const con = parseConfig({ modules: props.config })
 console.log(con)
 
-const modules = Object.keys(props.config).map((key) => {
-  return { ...(props.config as any)[key], id: key }
-})
+const modules = computed(() =>
+  Object.keys(props.config).map((key) => {
+    return { ...(props.config as any)[key], id: key }
+  })
+)
 
 function styleCalculator({ rows, cols }: { rows: number; cols: number }) {
   const height = `${5 * rows + rows - 1}rem`
