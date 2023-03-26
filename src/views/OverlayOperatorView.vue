@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import overlays from '@/overlays'
+import overlays from '@/project/overlays'
 import { socket } from '@/socket'
 import {
   ArrowDownOnSquareStackIcon,
   ChevronDoubleUpIcon,
   ChevronDoubleDownIcon,
-  ClipboardDocumentIcon
+  ClipboardDocumentIcon,
 } from '@heroicons/vue/24/solid'
 import { computed, onBeforeMount, onMounted, reactive, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import api from '@/api'
+import OperatorViewRenderer from './OperatorViewRenderer.vue'
 
 const route = useRoute()
 const overlayId = computed(() => route.params.id as string)
@@ -86,7 +87,10 @@ function copyOverlayUrl() {
         </div>
       </div>
       <div class="p-3 flex-1 overflow-scroll">
-        <component :is="overlays[overlayId].operatorCompontent" :data="overlayData" />
+        <OperatorViewRenderer
+          :data="overlayData"
+          :config="overlays[overlayId].operatorCompontent"
+        />
       </div>
     </div>
     <div class="flex flex-col" :class="{ 'h-1/2': isPreviewShown }">

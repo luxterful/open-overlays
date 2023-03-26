@@ -1,0 +1,14 @@
+{
+  "mainSocial": {
+    "displayText": "Main Social",
+    "type": "text"
+  },
+  "secondarySocial": {
+    "displayText": "Secondary Social",
+    "type": "text"
+  },
+  "showOverlay": {
+    "displayText": "show verlay",
+    "type": "bool"
+  }
+}

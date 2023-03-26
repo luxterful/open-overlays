@@ -1,5 +1,7 @@
+import type { Component } from 'vue'
 import BoolInputModule from './BoolInputModule.vue'
 import TextInputModule from './TextInputModule.vue'
+import NumberInputModule from './NumberInputModule.vue'
 
 export default {
   text: {
@@ -18,12 +20,10 @@ export default {
     data: {
       value: Number,
     },
-    component: TextInputModule,
+    component: NumberInputModule,
   },
-  testList: {
-    data: {
-      value: Array<String>,
-    },
-    component: TextInputModule,
-  },
+} as InputModuleDefinition
+
+interface InputModuleDefinition {
+  [key: string]: { component: Component; data: any }
 }

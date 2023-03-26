@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import CarouselComponent from '@/components/CarouselComponent.vue'
+import CarouselComponent from '@/project/components/CarouselComponent.vue'
 import { ref } from 'vue'
 
 const props = defineProps(['data'])

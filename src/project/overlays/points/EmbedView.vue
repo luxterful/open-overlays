@@ -55,7 +55,7 @@
 import crown from '@/assets/crown.png'
 import soundPop from '@/assets/sound.mp3'
 import soundWin from '@/assets/win.mp3'
-import CarouselComponent from '@/components/CarouselComponent.vue'
+import CarouselComponent from '@/project/components/CarouselComponent.vue'
 
 import { useSound } from '@vueuse/sound'
 import { onUnmounted, watch } from 'vue'

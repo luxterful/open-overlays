@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import api from '@/api'
-import overlays from '@/overlays'
+import overlays from '@/project/overlays'
 import { socket } from '@/socket'
 import { computed, onBeforeMount, onMounted, reactive } from 'vue'
 import { useRoute } from 'vue-router'

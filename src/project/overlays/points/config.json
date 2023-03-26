@@ -1,0 +1,34 @@
+{
+  "labelLeft": {
+    "displayText": "Label left",
+    "type": "text"
+  },
+  "labelRight": {
+    "displayText": "Label right",
+    "type": "text"
+  },
+  "counterLeft": {
+    "displayText": "Counter left",
+    "type": "number"
+  },
+  "counterRight": {
+    "displayText": "Counter right",
+    "type": "number"
+  },
+  "currentGame": {
+    "displayText": "Current game",
+    "type": "text"
+  },
+  "wonLeft": {
+    "displayText": "Left won",
+    "type": "bool"
+  },
+  "wonRight": {
+    "displayText": "Right won",
+    "type": "bool"
+  },
+  "showOverlay": {
+    "displayText": "show verlay",
+    "type": "bool"
+  }
+}

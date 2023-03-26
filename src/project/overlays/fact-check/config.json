@@ -1,0 +1,10 @@
+{
+  "factText": {
+    "displayText": "Fact",
+    "type": "text"
+  },
+  "showOverlay": {
+    "displayText": "show verlay",
+    "type": "bool"
+  }
+}

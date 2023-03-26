@@ -19,7 +19,7 @@ import TextList from '@/components/input-modules/TextListModule.vue'
 import config from './config.json'
 import { parseConfig } from './configLoader'
 
-import customModules from '@/custom-modules'
+import customModules from '@/project/custom-modules'
 
 const moduleTypeMap = {
   text: TextInput,

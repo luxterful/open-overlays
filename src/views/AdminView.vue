@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import ConnectionState from '@/components/ConnectionState.vue'
-import overlays from '@/overlays'
+import overlays from '@/project/overlays'
 
 const overlayKeys = Object.keys(overlays)
 </script>
