@@ -1,12 +1,12 @@
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-4">
     <div
-      class="border rounded-md h-20 overflow-hidden"
+      class="border rounded-md overflow-hidden"
       :style="mod.dimensions && styleCalculator(mod.dimensions)"
       v-for="mod in modules"
       :key="mod.id"
     >
-      <component :is="moduleMap[mod.type]" :label="mod.displayText" v-model="data[mod.id]" />
+      <component :is="getModule(mod.type)" :label="mod.displayText" v-model="data[mod.id]" />
     </div>
   </div>
 </template>
@@ -15,10 +15,27 @@
 import BoolInput from '@/components/input-modules/BoolInputModule.vue'
 import NumberInput from '@/components/input-modules/NumberInputModule.vue'
 import TextInput from '@/components/input-modules/TextInputModule.vue'
+import TextList from '@/components/input-modules/TextListModule.vue'
 import config from './config.json'
 import { parseConfig } from './configLoader'
 
-const moduleMap = { text: TextInput, number: NumberInput, bool: BoolInput } as any
+import customModules from '@/custom-modules'
+
+const moduleTypeMap = {
+  text: TextInput,
+  number: NumberInput,
+  bool: BoolInput,
+  'text-list': TextList,
+} as any
+
+function getModule(type: string) {
+  let mod = moduleTypeMap[type]
+  if (!mod) {
+    mod = (customModules as any)[type]?.component
+  }
+  if (!mod) return
+  return mod
+}
 const modulesRaw = config.modules
 
 const con = parseConfig(config)
@@ -35,7 +52,7 @@ function styleCalculator({ rows, cols }: { rows: number; cols: number }) {
   return {
     'grid-row': rows ? gridRow : undefined,
     'grid-column': cols ? gridCol : undefined,
-    height
+    height,
   }
 }
 

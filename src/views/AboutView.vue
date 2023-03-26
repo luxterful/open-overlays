@@ -27,14 +27,18 @@
 import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
 
-var tl = gsap.timeline({ paused: true, reversed: true })
+var tl = gsap.timeline()
 
 const played = ref(false)
 
 onMounted(() => {
   //tl.set('#test', { xPercent: -100 })
   tl.fromTo('#container', { xPercent: -100 }, { xPercent: 0 })
-  tl.fromTo('#points', { xPercent: -100 }, { xPercent: 0 })
+  tl.fromTo(
+    '#points',
+    { xPercent: -100, backgroundColor: '#123' },
+    { xPercent: 0, backgroundColor: '#ABC' }
+  )
   tl.fromTo('#time', { yPercent: 100 }, { yPercent: 0 })
 
   tl.progress(1)

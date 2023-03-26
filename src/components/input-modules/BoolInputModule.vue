@@ -1,16 +1,13 @@
 <template>
-  <div
-    class="w-full h-full cursor-pointer"
-    :class="[value ? 'bg-emerald-500' : 'bg-rose-500']"
+  <ModuleWrapper
+    :class="[value ? 'bg-emerald-500' : 'bg-rose-500', 'cursor-pointer']"
     @click="() => (value = !value)"
   >
-    <div class="flex flex-col h-full">
-      <div class="flex-1 flex items-center justify-center">
-        <div class="text-md text-white">
-          {{ label }}
-        </div>
-      </div>
-      <div class="flex-1 flex items-center justify-center">
+    <template #label>
+      <span class="text-white">{{ label }}</span>
+    </template>
+    <template #content>
+      <div class="flex items-center justify-center">
         <div
           class="relative inline-block w-10 h-6 mr-2 align-middle select-none transition duration-200 ease-in rounded-full overflow-hidden"
         >
@@ -21,12 +18,13 @@
           />
         </div>
       </div>
-    </div>
-  </div>
+    </template>
+  </ModuleWrapper>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import ModuleWrapper from './ModuleWrapper.vue'
 
 const props = defineProps<{
   modelValue?: boolean
@@ -41,6 +39,6 @@ const value = computed({
   },
   set(value: boolean) {
     emit('update:modelValue', value)
-  }
+  },
 })
 </script>

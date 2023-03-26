@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.16",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@vueuse/sound": "^2.0.1",
     "gsap": "^3.11.5",
     "pinia": "^2.0.32",

@@ -1,18 +1,24 @@
 <template>
-  <div>
-    <span class="font-bold text-lg">Syndsk Twitch Chat</span>
-    <div class="flex flex-col gap-1 mt-4">
-      <div v-for="message in messages" :key="message.id" class="flex justify-between">
-        <div>
-          <span class="font-bold">{{ message.sender }}:</span> {{ message.content }}
+  <ModuleWrapper>
+    <template #label>Syndsk Twitch Chat</template>
+    <template #content>
+      <div class="h-full bg-slate-200 rounded-md overflow-y-auto">
+        <div class="flex flex-col gap-1">
+          <div v-if="messages.length === 0">NO MESSAGES</div>
+          <div v-for="message in messages" :key="message.id" class="flex justify-between p-1">
+            <div>
+              <span class="font-bold">{{ message.sender }}:</span> {{ message.content }}
+            </div>
+            <div><slot name="buttons" v-bind="message" /></div>
+          </div>
         </div>
-        <div><slot name="buttons" v-bind="message" /></div>
       </div>
-    </div>
-  </div>
+    </template>
+  </ModuleWrapper>
 </template>
 
 <script setup lang="ts">
+import ModuleWrapper from '@/components/input-modules/ModuleWrapper.vue'
 import tmi from 'tmi.js'
 import parser from 'tmi.js/lib/parser'
 import { ref } from 'vue'
@@ -22,7 +28,7 @@ const messages = ref<any>([])
 const recentMessages = 'https://recent-messages.robotty.de/api/v2/recent-messages/syndsk'
 
 const client = new tmi.client({
-  channels: ['syndsk']
+  channels: ['syndsk'],
 })
 
 client.on('message', (target, context, msg, self) => {

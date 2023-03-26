@@ -51,7 +51,7 @@
 import TextInput from '@/components/TextInput.vue'
 import { ChevronDoubleRightIcon } from '@heroicons/vue/24/solid'
 import { computed } from 'vue'
-import TwitchChat from '../../components/TwitchChat.vue'
+import TwitchChat from '../../custom-modules/TwitchChat.vue'
 
 const props = defineProps(['data'])
 

@@ -1,16 +1,26 @@
 {
   "modules": {
+    "twitchChat": {
+      "displayText": "twitch chat",
+      "type": "twitch-chat",
+      "dimensions": {
+        "rows": 6,
+        "cols": 2
+      }
+    },
     "labelLeft": {
       "displayText": "Label left",
-      "type": "text"
+      "type": "text",
+      "dimensions": { "rows": 2 }
     },
     "labelRight": {
       "displayText": "Label right",
       "type": "text"
     },
     "counterLeft": {
-      "displayText": "Counter left Counter left Counter left Counter left",
-      "type": "number"
+      "displayText": "this is a very long text which should be truncated after the second line",
+      "type": "number",
+      "dimensions": { "rows": 2 }
     },
     "counterRight": {
       "displayText": "Counter right",
@@ -22,7 +32,8 @@
     },
     "wonLeft": {
       "displayText": "Left won",
-      "type": "bool"
+      "type": "bool",
+      "dimensions": { "rows": 2 }
     },
     "wonRight": {
       "displayText": "Right won",
@@ -31,6 +42,11 @@
     "showOverlay": {
       "displayText": "show verlay",
       "type": "bool"
+    },
+    "socials": {
+      "displayText": "Socials",
+      "type": "text-list",
+      "dimensions": { "rows": 2 }
     }
   }
 }
