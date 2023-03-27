@@ -16,3 +16,7 @@ services:
     networks:
       - shared
     command: ["npm", "run", "serve"]
+
+networks:
+  shared:
+    external: true
