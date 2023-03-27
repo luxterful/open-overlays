@@ -34,12 +34,10 @@ watch(
 .v-leave-active {
   transition: all 0.5s ease;
 }
-
 .v-leave-to {
   transform: translateX(50px);
   opacity: 0;
 }
-
 .v-enter-from {
   transform: translateX(50px);
   opacity: 0;
