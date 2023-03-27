@@ -4,6 +4,15 @@ services:
   frontend:
     build:
       context: .
-    ports:
-      - "8080:5173"
+    expose:
+      - "5173"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=shared"
+      - "traefik.http.routers.fe.rule=Host(`open-overlays.luxterful.eu`)"
+      - "traefik.http.services.fe.loadbalancer.server.port=5173"
+      - "traefik.http.routers.fe.tls=true"
+      - "traefik.http.routers.fe.tls.certresolver=acmeresolver"
+    networks:
+      - shared
     command: ["npm", "run", "serve"]
