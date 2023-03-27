@@ -8,7 +8,7 @@
       :key="mod.id"
     >
       <component
-        :is="modulesMap[mod.type].component"
+        :is="allModules[mod.type].component"
         :label="mod.displayText"
         v-model="data[mod.id]"
       />
@@ -19,7 +19,11 @@
 <script setup lang="ts">
 import { parseConfig } from '@/utils/configLoader'
 import modulesMap from '@/components/input-modules'
+import customModulesMap from '@/project/custom-modules'
 import { computed } from 'vue'
+import type { InputModuleDefinition } from '@/types/InputModules'
+
+const allModules: InputModuleDefinition = { ...modulesMap, ...customModulesMap }
 
 const props = defineProps(['data', 'config'])
 

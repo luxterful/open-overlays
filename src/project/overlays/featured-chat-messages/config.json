@@ -1,0 +1,14 @@
+{
+  "twitchChat": {
+    "displayText": "Twitch Chat of Syndsk",
+    "type": "twitch-chat",
+    "dimensions": {
+      "rows": 5,
+      "cols": 6
+    }
+  },
+  "showOverlay": {
+    "displayText": "show verlay",
+    "type": "bool"
+  }
+}

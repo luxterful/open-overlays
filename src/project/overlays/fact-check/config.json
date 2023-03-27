@@ -1,7 +1,10 @@
 {
   "factText": {
     "displayText": "Fact",
-    "type": "text"
+    "type": "multiline-text",
+    "dimensions": {
+      "rows": 3
+    }
   },
   "showOverlay": {
     "displayText": "show verlay",

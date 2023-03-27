@@ -1,4 +1,4 @@
-import TwitchChatVue from './TwitchChat.vue'
+import TwitchChatVue from './TwitchChat/TwitchChat.vue'
 
 export default {
   'twitch-chat': {

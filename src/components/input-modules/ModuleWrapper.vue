@@ -6,7 +6,7 @@
           <slot name="label" />
         </div>
       </div>
-      <div class="flex-1 p-1">
+      <div class="flex-1 p-1 overflow-hidden">
         <slot name="content" />
       </div>
     </div>

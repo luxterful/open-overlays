@@ -6,7 +6,7 @@
     >
       <div class="absolute -mt-5 -ml-5 bg-green-600 p-2 rounded md text-white">FACT CHECK</div>
       <div class="pt-7 px-4 pb-4">
-        {{ data.fact }}
+        {{ data.factText }}
       </div>
     </div>
   </Transition>

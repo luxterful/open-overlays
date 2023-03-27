@@ -1,7 +1,9 @@
-import type { Component } from 'vue'
 import BoolInputModule from './BoolInputModule.vue'
 import TextInputModule from './TextInputModule.vue'
+import MultilineTextInputModule from './MultilineTextInputModule.vue'
 import NumberInputModule from './NumberInputModule.vue'
+
+import type { InputModuleDefinition } from '@/types/InputModules'
 
 export default {
   text: {
@@ -9,6 +11,12 @@ export default {
       value: String,
     },
     component: TextInputModule,
+  },
+  'multiline-text': {
+    data: {
+      value: String,
+    },
+    component: MultilineTextInputModule,
   },
   bool: {
     data: {
@@ -23,7 +31,3 @@ export default {
     component: NumberInputModule,
   },
 } as InputModuleDefinition
-
-interface InputModuleDefinition {
-  [key: string]: { component: Component; data: any }
-}

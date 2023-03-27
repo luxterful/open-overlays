@@ -1,14 +1,14 @@
 <template>
   <Transition name="message">
     <div
-      v-if="data.showOverlay"
+      v-if="data.showOverlay && data.twitchChat.featuredMessage"
       class="relative bg-white border border-green-300 rounded-md m-10 -skew-x-12"
     >
       <div class="absolute -mt-5 -ml-5 bg-green-600 p-2 rounded md text-white">
-        <span class="font-bold">{{ data.selectedMessage.sender }}</span> fragt:
+        <span class="font-bold">{{ data.twitchChat.featuredMessage.sender }}</span> fragt:
       </div>
       <div class="pt-7 px-4 pb-4">
-        {{ data.selectedMessage.content }}
+        {{ data.twitchChat.featuredMessage.content }}
       </div>
     </div>
   </Transition>
