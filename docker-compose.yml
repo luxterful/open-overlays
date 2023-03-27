@@ -6,6 +6,4 @@ services:
       context: .
     ports:
       - "8080:5173"
-    volumes:
-      - .:/app
     command: ["npm", "run", "serve"]
