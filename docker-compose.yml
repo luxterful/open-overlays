@@ -4,19 +4,8 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8080:5173"
     volumes:
       - .:/app
-    command: ["npm", "run", "preview"]
-
-  backend:
-    build:
-      context: nest-backend
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    volumes:
-      - best-backend:/app
-    command: ["npm", "run", "start"]
+    command: ["npm", "run", "serve"]

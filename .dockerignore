@@ -1,0 +1,11 @@
+.git
+Dockerfile
+docker-compose.yml
+**/build
+**/dist
+node_modules
+**/node_modules
+**/.DS_Store
+docs
+*.log
+.vscode
