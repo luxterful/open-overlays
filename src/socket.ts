@@ -4,12 +4,11 @@ import { io } from 'socket.io-client'
 export const state = reactive({
   connected: false,
   fooEvents: [],
-  barEvents: []
+  barEvents: [],
 })
 
-const URL = 'http://localhost:3000/'
-
-export const socket = io(URL)
+// default url is window.location.host
+export const socket = io()
 
 socket.on('connect', () => {
   state.connected = true

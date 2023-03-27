@@ -86,7 +86,7 @@ function copyOverlayUrl() {
           <ClipboardDocumentIcon class="h-5 w-5" />Copy overlay url
         </div>
       </div>
-      <div class="p-3 flex-1 overflow-scroll">
+      <div class="p-3 flex-1 overflow-auto">
         <OperatorViewRenderer
           :data="overlayData"
           :config="overlays[overlayId].operatorCompontent"
