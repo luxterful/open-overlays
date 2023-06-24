@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      ;(() => {
+        const saved = localStorage.getItem('Appearance')
+        const prefereDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (!saved || saved === 'auto' ? prefereDark : saved === 'dark') {
+          document.documentElement.classList.add('dark')
+        }
+      })()
+    </script>
     <title>Vite App</title>
   </head>
   <body>

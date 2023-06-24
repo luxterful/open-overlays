@@ -1,0 +1,14 @@
+datasource db {
+    provider = "postgres"
+    url      = "postgresql://postgres:postgres@localhost:5432"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Overlay {
+    id        String @id
+    dataLive  Json
+    dataStage Json
+}

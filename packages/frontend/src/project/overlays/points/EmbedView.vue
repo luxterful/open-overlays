@@ -6,7 +6,7 @@
           <div
             class="bg-green-600 border-green-700 drop-shadow-md rounded-l-xl border-l-2 border-t-2 border-b-2 p-4 w-72 text-white flex items-center justify-center text-2xl flex-1"
           >
-            {{ data.labelLeft }}
+            {{ data.labelLeft || '&#xfeff;' }}
           </div>
           <div class="w-16 text-4xl relative">
             <div
@@ -40,7 +40,7 @@
           <div
             class="bg-green-600 border-green-700 drop-shadow-md z-0 rounded-r-xl border-r-2 border-t-2 border-b-2 p-4 w-72 text-white flex items-center justify-center text-2xl flex-1"
           >
-            {{ data.labelRight }}
+            {{ data.labelRight || '&#xfeff;' }}
           </div>
         </div>
         <div class="flex items-center justify-center mt-8" v-if="data.currentGame">

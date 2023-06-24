@@ -17,6 +17,19 @@ services:
       - shared
     command: ["npm", "run", "serve"]
 
+  postgres:
+    container_name: postgres
+    image: postgres:14.6-bullseye
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    profiles:
+        - database
+    networks:
+      - shared
 networks:
   shared:
-    external: true
+    external: false

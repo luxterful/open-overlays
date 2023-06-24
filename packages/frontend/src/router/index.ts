@@ -6,12 +6,12 @@ export default createRouter({
     {
       path: '/',
       name: 'home',
-      redirect: { name: 'overlays' }
+      redirect: { name: 'no-overlay-selected' },
     },
     {
       path: '/test',
       name: 'test',
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/AboutView.vue'),
     },
     {
       path: '/overlays',
@@ -19,17 +19,22 @@ export default createRouter({
       component: () => import('../views/AdminView.vue'),
       children: [
         {
+          path: '',
+          name: 'no-overlay-selected',
+          component: () => import('../views/NoOverlaySelected.vue'),
+        },
+        {
           path: ':id',
           name: 'overlays-detail',
-          component: () => import('../views/OverlayOperatorView.vue')
-        }
-      ]
+          component: () => import('../views/OverlayOperatorView.vue'),
+        },
+      ],
     },
 
     {
       path: '/embed/:id',
       name: 'embed',
-      component: () => import('../views/OverlayEmbedView.vue')
-    }
-  ]
+      component: () => import('../views/OverlayEmbedView.vue'),
+    },
+  ],
 })

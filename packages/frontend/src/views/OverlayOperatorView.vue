@@ -15,7 +15,7 @@ import OperatorViewRenderer from './OperatorViewRenderer.vue'
 const route = useRoute()
 const overlayId = computed(() => route.params.id as string)
 
-const overlayData = reactive({})
+const overlayData = ref({})
 const autoUpdate = ref(false)
 
 const isLoading = ref(true)
@@ -28,10 +28,10 @@ onMounted(() => {
 async function fetchData() {
   const data = await api.getOverlayById(overlayId.value)
   console.log('loaded', data)
-  for (const key of Object.keys(overlayData)) {
-    delete (overlayData as any)[key]
+  for (const key of Object.keys(overlayData.value)) {
+    delete (overlayData.value as any)[key]
   }
-  Object.assign(overlayData, data)
+  overlayData.value = data
 }
 
 onBeforeMount(async () => {
@@ -44,11 +44,15 @@ watch(overlayId, (to: string, from: string) => {
 })
 
 watch(overlayData, () => {
-  if (autoUpdate.value) socket.emit('updateData', { overlayId: overlayId.value, data: overlayData })
+  socket.emit('updateData', {
+    overlayId: overlayId.value,
+    data: overlayData.value,
+    autoUpdate: autoUpdate.value,
+  })
 })
 
 function updateOverlay() {
-  socket.emit('updateData', { overlayId: overlayId.value, data: overlayData })
+  socket.emit('updateData', { overlayId: overlayId.value, data: overlayData.value })
 }
 
 function copyOverlayUrl() {

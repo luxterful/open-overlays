@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import ConnectionState from '@/components/ConnectionState.vue'
 import overlays from '@/project/overlays'
+import AppearanceMode from '@/components/AppearanceMode.vue'
 
 const overlayKeys = Object.keys(overlays)
 </script>
@@ -23,6 +24,7 @@ const overlayKeys = Object.keys(overlays)
         </nav>
       </div>
       <div class="p-2">
+        <AppearanceMode class="w-full" />
         <ConnectionState class="w-full" />
       </div>
     </header>

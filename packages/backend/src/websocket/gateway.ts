@@ -42,12 +42,13 @@ export class SocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   @SubscribeMessage('updateData')
-  onUpdateData(
+  async onUpdateData(
     @ConnectedSocket() socket: Socket,
-    @MessageBody() message: { overlayId: string; data: any },
+    @MessageBody()
+    message: { overlayId: string; data: any; autoUpdate: boolean },
   ) {
     console.log(`[updateData]: ${JSON.stringify(message)}`);
-    this.overlayDataService.setById(message.overlayId, message.data);
+    await this.overlayDataService.setById(message.overlayId, message.data);
     socket.to(message.overlayId).emit('updateData', message.data);
   }
 }

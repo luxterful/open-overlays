@@ -11,7 +11,7 @@ export class OverlayDataController {
   // }
 
   @Get(':id')
-  findOne(@Param() params): string {
-    return this.overlayDataService.getById(params.id);
+  async findOne(@Param() params): Promise<string> {
+    return await this.overlayDataService.getById(params.id);
   }
 }
